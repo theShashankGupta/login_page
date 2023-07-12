@@ -1,0 +1,40 @@
+
+
+.bg{
+    background: linear-gradient(180deg, #054B90 0%, #2D99C7 43.23%, #39B0D7 56.42%, #3DB9DD 61.10%, #3EBADE 61.11%, #41C0E2 64.24%, #31BDDE 71.01%, #31BEDE 71.02%, #32C1E0 81.94%, #3BB8E4 86.98%, #53A0EC 100%);
+}
+
+.inputbox {
+    background-color: black;
+}
+
+.form1 {
+    padding-top: 80px;
+    max-width: 340px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.input-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container label {
+    position: absolute;
+    pointer-events: none;
+    transform: translate(0, 23px) scale(1);
+    transform-origin: top left;
+    transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    color: #6f81a5;
+    font-size: 16px;
+    line-height: 1;
+    left: 16px;
+}
+
+.input-container:focus-within label {
+    transform: translate(0, 12px) scale(0.8);
+}
