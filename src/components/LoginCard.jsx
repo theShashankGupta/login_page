@@ -1,36 +1,33 @@
-import {
-  Flex,
-  Box,
-  Checkbox,
-  Stack,
-  Button,
-  Heading,
-  Link,
-  InputRightElement,
-} from "@chakra-ui/react";
-import Username from "./username"
-import Password from "./password"
-import axios from "axios";
-import React from 'react';
-import './styles.css';
 import { useState } from 'react';
-
-const handleLogin = async (event) => {
-  event.preventDefault(); // Prevent the form from submitting and refreshing the page
-  try {
-    const response = await axios.post('/api/auth', {
-      Username: Username,
-      Password: Password,
-    });
-    console.log(response.data); // Handle the response from the server
-  } catch (error) {
-    console.error('Error:', error); // Handle any errors that occurred during the request
-  }
-};
+import { Flex, Box, Checkbox, Stack, Button, Heading, Link } from '@chakra-ui/react';
+import Username from './username';
+import Password from './password';
+import axios from 'axios';
+// import { useHistory } from 'react-router-dom';
 
 const LoginCard = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  // const history = useHistory();
+
+  const handleLogin = async (event) => {
+    event.preventDefault(); // Prevent the form from submitting and refreshing the page
+    try {
+      const response = await axios.post('http://localhost:3000/api/auth', {
+        Username: username,
+        Password: password,
+      });
+      console.log(response.data); // Handle the response from the server
+      function myFunc() {
+        location.replace("https://dashboard1-f93g.vercel.app/");
+      }
+      myFunc();
+      // Redirect to the dashboard upon successful login
+      // history.push('/dashboard');
+    } catch (error) {
+      console.error('Error:', error); // Handle any errors that occurred during the request
+    }
+  };
 
   const handleUsernameChange = (value) => {
     setUsername(value);
@@ -83,4 +80,3 @@ const LoginCard = () => {
 };
 
 export default LoginCard;
-
